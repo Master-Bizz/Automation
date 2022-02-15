@@ -13,12 +13,23 @@ differences = 7
 # CATCGTAATGACGGCCT
 # CATCGTAATGACGGCCT   .. 'zip' function groups everything together as displayed in Shell - print(list(zip(string_a, string_b)))
 def diff_count(string_a,string_b):
-  if len(string_a) != len(string_b):
+   if len(string_a) != len(string_b):
      raise ValueError ('Review. Both string_a and string_b must be equal')
 
-  result = []
-  for x, y in zip(string_a, string_b):
+     result = []
+   for x, y in zip(string_a, string_b):
        if x != y:
          result.append((x,y))
-  return len(result)   
+   return len(result)   
 
+'''
+More refined below
+'''
+
+def diff_count(string_a,string_b):
+   validate(string_a,string_b)
+   return len([[x,y]for x, y in zip(string_a, string_b) if x !=y])
+
+def validate(string_a,string_b):
+   if len(string_a) != len(string_b):
+     raise ValueError ('Review. Both string_a and string_b must be equal')
